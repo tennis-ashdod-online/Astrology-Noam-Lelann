@@ -1,68 +1,79 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html dir="rtl" lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אסטרולוגיה עם נועם לולאן</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- לחצן נגישות -->
-    <button id="accessibilityButton" title="מצב נגישות">נגישות</button>
-
-    <!-- כותרת ראשית -->
     <header>
-        <div class="header-content">
-            <h1>ברוכים הבאים לעולם האסטרולוגיה</h1>
-            <p>אני נועם לולאן, ומזמין אתכם ללמוד את הסודות של האסטרולוגיה, להבין את עצמכם ואת הסובבים אתכם ולגלות כלים מעשיים לחיים.</p>
-        </div>
+        <h1>אסטרולוגיה עם נועם לולאן</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">בית</a></li>
+                <li><a href="#info">מרכז מידע</a></li>
+                <li><a href="#courses">קורסים</a></li>
+                <li><a href="#about">אודות</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- מרכז מידע -->
-    <section id="info">
-        <h2>מרכז ידע באסטרולוגיה</h2>
-        <p>באתר זה תוכלו למצוא מדריכים, מאמרים וטיפים על כוכבי לכת, ירחים, מזלות וטרנזיטים:</p>
-        <ul>
-            <li>הבנת המפה האישית שלכם</li>
-            <li>כיצד כוכבי הלכת משפיעים על חייכם</li>
-            <li>אסטרולוגיה למתחילים ולמתקדמים</li>
-            <li>טרנזיטים ואירועים משמעותיים</li>
-        </ul>
-    </section>
+    <main>
+        <section id="home">
+            <h2>ברוכים הבאים</h2>
+            <p>אני רוצה לפזר את הידע והניסיון האישי שלי עם אסטרולוגיה לקהל הרחב. כאן תוכלו ללמוד המון על הנושא דרכי. ללמידה מעמיקה יותר, הגולשים יוכלו לרכוש דרכי קורסים שבהם אני אשב עם לקוחות באופן פרטני ואישי באופן מקוון.</p>
+        </section>
 
-    <!-- קורסים -->
-    <section id="courses">
-        <h2>קורסים והדרכה אישית</h2>
-        <div class="courses-container">
-            <div class="course-card">
-                <div class="course-icon">🌟</div>
-                <h3>קורס יסודות האסטרולוגיה</h3>
-                <p>קורס למתחילים שמסביר את הבסיס והעקרונות של האסטרולוגיה.</p>
-                <button>לרכישה</button>
-            </div>
-            <div class="course-card">
-                <div class="course-icon">🪐</div>
-                <h3>קורס מתקדם למפת חיים</h3>
-                <p>לימוד מעמיק על המפה האישית שלכם ופרשנות כוכבי הלכת.</p>
-                <button>לרכישה</button>
-            </div>
-            <div class="course-card">
-                <div class="course-icon">🌙</div>
-                <h3>קורס חיזוי וטרנזיטים</h3>
-                <p>למדו כיצד להבין אירועים עתידיים דרך תנועות הכוכבים.</p>
-                <button>לרכישה</button>
-            </div>
-        </div>
-    </section>
+        <section id="info">
+            <h2>מרכז מידע</h2>
+            <p>כאן תמצאו מאמרים, טיפים ומשאבים על אסטרולוגיה. לדוגמה:</p>
+            <ul>
+                <li>מזלות השמש והירח</li>
+                <li>השפעת הכוכבים על חיי היומיום</li>
+                <li>טכניקות קריאת מפות לידה</li>
+            </ul>
+            <!-- Add more content as needed -->
+        </section>
 
-    <!-- יצירת קשר -->
+        <section id="courses">
+            <h2>קורסים מוכנים</h2>
+            <p>רכשו קורסים מקוונים להעמקה באסטרולוגיה:</p>
+            <div class="course">
+                <h3>קורס בסיסי באסטרולוגיה</h3>
+                <p>למידה על מזלות, בתים וכוכבים. מחיר: 200 ש"ח.</p>
+                <button>רכישה</button>
+            </div>
+            <div class="course">
+                <h3>קורס מתקדם</h3>
+                <p>ניתוח מפות אישיות ותחזיות. מחיר: 500 ש"ח.</p>
+                <button>רכישה</button>
+            </div>
+            <!-- Placeholder for payment, integrate as needed -->
+        </section>
+
+        <section id="about">
+            <h2>אודות</h2>
+            <p>שמי נועם לולאן, מומחה באסטרולוגיה עם ניסיון רב.</p>
+            <button onclick="window.open('https://wa.me/+972538220279', '_blank')">צור קשר בוואטסאפ</button>
+        </section>
+    </main>
+
     <footer>
-        <h2>יצירת קשר</h2>
-        <p>שם מלא: נועם לולאן</p>
-        <p>אימייל: <a href="mailto:veganox22@gmail.com">veganox22@gmail.com</a></p>
-        <p>&copy; 2026 נועם לולאן - כל הזכויות שמורות</p>
+        <p>צור קשר: נועם לולאן | אימייל: veganox22@gmail.com</p>
     </footer>
+
+    <!-- Cookie Consent Modal -->
+    <div id="cookie-modal" class="modal">
+        <div class="modal-content">
+            <p>אנו משתמשים בקובצי cookies כדי לשפר את החוויה שלך. האם אתה מאשר?</p>
+            <button id="accept-cookies">מאשר</button>
+        </div>
+    </div>
+
+    <!-- Accessibility Button -->
+    <button id="accessibility-btn">נגישות</button>
 
     <script src="script.js"></script>
 </body>
