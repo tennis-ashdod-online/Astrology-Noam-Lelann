@@ -1,11 +1,153 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אסטרולוגיה עם נועם לולאן</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* כל ה-CSS כאן */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            direction: rtl;
+            text-align: right;
+        }
+
+        header {
+            background-color: #4a4a8c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #4a4a8c;
+        }
+
+        .course {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4a4a8c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        footer {
+            background-color: #4a4a8c;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 320px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        #accessibility-btn {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #4a4a8c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        #accessibility-btn:hover {
+            background-color: #6a6ab8;
+            transform: scale(1.1);
+        }
+
+        .large-font {
+            font-size: 1.2em !important;
+        }
+
+        .high-contrast {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+
+        .high-contrast * {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -70,9 +212,35 @@
         </div>
     </div>
 
-    <!-- כפתור נגישות מרחף – מוזז למטה יותר -->
+    <!-- כפתור נגישות -->
     <button id="accessibility-btn" title="נגישות">♿</button>
 
-    <script src="script.js"></script>
+    <script>
+        // כל ה-JavaScript כאן
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cookie Consent
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-modal').style.display = 'block';
+            }
+
+            document.getElementById('accept-cookies').addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                document.getElementById('cookie-modal').style.display = 'none';
+            });
+
+            // Accessibility Toggle
+            const accessBtn = document.getElementById('accessibility-btn');
+            let largeFont = false;
+            let highContrast = false;
+
+            accessBtn.addEventListener('click', function() {
+                largeFont = !largeFont;
+                highContrast = !highContrast;
+
+                document.body.classList.toggle('large-font', largeFont);
+                document.body.classList.toggle('high-contrast', highContrast);
+            });
+        });
+    </script>
 </body>
 </html>
