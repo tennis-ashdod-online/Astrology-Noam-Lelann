@@ -136,7 +136,7 @@
             font-size: 1.5rem;
         }
 
-        button {
+        button, .consult-btn {
             background: linear-gradient(45deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
@@ -146,11 +146,47 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 8px 25px rgba(124,58,237,0.4);
+            display: inline-block;
+            text-decoration: none;
         }
 
-        button:hover {
+        button:hover, .consult-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(124,58,237,0.6);
+        }
+
+        .consult-btn {
+            background: linear-gradient(45deg, var(--accent), #f59e0b);
+            color: #0f0c29;
+            margin: 2rem auto;
+            display: block;
+            width: fit-content;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+        }
+
+        .about-profile {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+
+        .about-profile img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-profile p {
+            font-style: italic;
+            color: #d1c4e9;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
         }
 
         .video-section {
@@ -199,7 +235,6 @@
             margin: 0.6rem 0;
         }
 
-        /* סטייל לאייקוני רשתות חברתיות */
         .social-icons {
             display: flex;
             justify-content: center;
@@ -227,7 +262,6 @@
             object-fit: cover;
         }
 
-        /* כפתור נגישות – מוזז מעט למטה יותר */
         #accessibility-btn {
             position: fixed;
             top: 100px;
@@ -253,7 +287,6 @@
             box-shadow: 0 12px 35px rgba(124,58,237,0.7);
         }
 
-        /* נגישות */
         .large-font { font-size: 1.25em !important; line-height: 1.7; }
         .high-contrast {
             background: #000 !important;
@@ -265,7 +298,6 @@
             border-color: #fff !important;
         }
 
-        /* מודאל קוקיז */
         .modal {
             display: none;
             position: fixed;
@@ -360,14 +392,28 @@
 
         <section id="about">
             <h2>אודות</h2>
-            <p style="text-align:center; max-width:800px; margin:0 auto 2rem; font-size:1.15rem; line-height:1.8;">
+            <p style="text-align:center; max-width:800px; margin:0 auto 1rem; font-size:1.15rem; line-height:1.8;">
                 שמי נועם לולאן, מומחה באסטרולוגיה עם ניסיון רב.
             </p>
+
+            <!-- תמונה אישית + טקסט קצר -->
+            <div class="about-profile">
+                <img src="https://files.catbox.moe/0q3x0k.jpg" alt="נועם לולאן">
+                <p>
+                    "אני כאן כדי לעזור לך להבין את המפה האישית שלך ולנווט בחיים בצורה מודעת, מאוזנת ומשמעותית יותר."
+                </p>
+            </div>
+
             <div style="text-align:center;">
                 <button onclick="window.open('https://wa.me/+972538220279?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%20%3A%29', '_blank')">
                     צור קשר בוואטסאפ
                 </button>
             </div>
+
+            <!-- כפתור קביעת פגישה חינם -->
+            <a href="https://wa.me/+972538220279?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A4%D7%92%D7%99%D7%A9%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%AA%20%D7%97%D7%99%D7%A0%D7%9D%20(%D7%91%D7%9F%2030%20%D7%93%D7%A7%D7%95%D7%AA)" target="_blank" class="consult-btn">
+                קבע פגישת ייעוץ ראשונית חינם (30 דק')
+            </a>
         </section>
     </main>
 
@@ -375,7 +421,6 @@
         <h3>צור קשר</h3>
         <p>טלפון: 053-822-0279</p>
 
-        <!-- אייקוני רשתות חברתיות -->
         <div class="social-icons">
             <a href="https://www.facebook.com/share/1ZvRPhjXMG/" target="_blank" rel="noopener noreferrer" class="social-icon">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
@@ -405,7 +450,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Cookie Consent
             if (!localStorage.getItem('cookiesAccepted')) {
                 document.getElementById('cookie-modal').style.display = 'flex';
             }
@@ -415,7 +459,6 @@
                 document.getElementById('cookie-modal').style.display = 'none';
             });
 
-            // Accessibility Toggle
             const accessBtn = document.getElementById('accessibility-btn');
             let largeFont = false;
             let highContrast = false;
