@@ -19,12 +19,6 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="he_IL">
     
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="אסטרולוגיה עם נועם לולאן">
-    <meta name="twitter:description" content="לימודי אסטרולוגיה אישיים ומקצועיים – קורסים והדרכות עם נועם לולאן.">
-    <meta name="twitter:image" content="https://i.postimg.cc/WzJrpG57/Screenshot-20260306-232738-Facebook.jpg">
-    
     <!-- Favicon -->
     <link rel="icon" href="https://img.icons8.com/fluency/48/000000/star.png" type="image/png">
     
@@ -62,41 +56,77 @@
             pointer-events: none;
         }
 
-        header {
-            background: rgba(11,9,38,0.75);
-            backdrop-filter: blur(10px);
-            padding: 2rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(124,58,237,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--accent);
-            text-shadow: 0 4px 20px rgba(251,191,36,0.3);
-            margin-bottom: 0.5rem;
-        }
-
-        nav ul {
-            list-style: none;
+        /* Hamburger Menu */
+        .header-container {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
         }
 
-        nav a {
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--accent);
+            z-index: 1100;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
 
-        nav a:hover { color: var(--accent); }
+        .nav-menu a:hover { color: var(--accent); }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100%;
+                background: rgba(11,9,38,0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s ease;
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu a {
+                font-size: 1.5rem;
+                margin: 1.5rem 0;
+            }
+        }
+
+        /* Close Button for Mobile */
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 2.5rem;
+            color: var(--accent);
+            cursor: pointer;
+            display: none;
+        }
+
+        .nav-menu.active .close-btn { display: block; }
 
         main { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; }
 
@@ -151,21 +181,6 @@
             transform: translateY(-15px) scale(1.05);
             box-shadow: 0 30px 60px rgba(124,58,237,0.4);
             border-color: var(--accent);
-        }
-
-        .course::after {
-            content: "";
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            pointer-events: none;
-        }
-
-        .course:hover::after {
-            opacity: 1;
         }
 
         .course h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.5rem; }
@@ -373,15 +388,19 @@
 <body>
 
     <header>
-        <h1>אסטרולוגיה עם נועם לולאן</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">בית</a></li>
-                <li><a href="#info">מרכז מידע</a></li>
-                <li><a href="#courses">קורסים</a></li>
-                <li><a href="#about">אודות</a></li>
-                <li><a href="#contact">צור קשר</a></li>
-            </ul>
+        <div class="header-container">
+            <h1>אסטרולוגיה עם נועם לולאן</h1>
+            <div class="hamburger" id="hamburger">☰</div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="nav-menu" id="nav-menu">
+            <span class="close-btn" id="close-btn">×</span>
+            <a href="#home">בית</a>
+            <a href="#info">מרכז מידע</a>
+            <a href="#courses">קורסים</a>
+            <a href="#about">אודות</a>
+            <a href="#contact">צור קשר</a>
         </nav>
     </header>
 
@@ -499,6 +518,26 @@
     <button id="accessibility-btn" title="נגישות">♿</button>
 
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const closeBtn = document.getElementById('close-btn');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
         // אנימציה לכניסת סעיפים
         const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver((entries) => {
