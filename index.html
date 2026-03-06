@@ -572,6 +572,13 @@
                 document.body.classList.toggle('large-font', largeFont);
                 document.body.classList.toggle('high-contrast', highContrast);
             });
+
+            // תיקון: גלילה לראש הדף אחרי טעינה (גם עם #hash בכתובת)
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 100); // עיכוב קטן כדי לתת לדפדפן להתמקם קודם
+            });
         });
 
         // שליחה לוואטסאפ מהטופס
