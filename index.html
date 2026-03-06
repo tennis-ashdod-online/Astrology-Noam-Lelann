@@ -1,46 +1,58 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אסטרולוגיה עם נועם לולאן</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- לחצן נגישות -->
-    <button id="accessibilityButton">נגישות</button>
+    <button id="accessibilityButton" title="מצב נגישות">נגישות</button>
 
     <!-- כותרת ראשית -->
     <header>
-        <h1>ברוכים הבאים לאתר האסטרולוגיה שלי</h1>
-        <p>אני נועם לולאן, כאן כדי לשתף את הידע והניסיון שלי בתחום האסטרולוגיה וללמד אתכם כיצד להבין טוב יותר את עצמכם ואת סביבתכם.</p>
+        <div class="header-content">
+            <h1>ברוכים הבאים לעולם האסטרולוגיה</h1>
+            <p>אני נועם לולאן, ומזמין אתכם ללמוד את הסודות של האסטרולוגיה, להבין את עצמכם ואת הסובבים אתכם ולגלות כלים מעשיים לחיים.</p>
+        </div>
     </header>
 
     <!-- מרכז מידע -->
     <section id="info">
-        <h2>מרכז מידע באסטרולוגיה</h2>
-        <p>כאן תמצאו מאמרים, מדריכים וטיפים על אסטרולוגיה: כוכבים, ירחים, ליקויים, מזלות ועוד.</p>
+        <h2>מרכז ידע באסטרולוגיה</h2>
+        <p>באתר זה תוכלו למצוא מדריכים, מאמרים וטיפים על כוכבי לכת, ירחים, מזלות וטרנזיטים:</p>
         <ul>
-            <li>הבנת המפה האסטרולוגית האישית שלך</li>
-            <li>כיצד כוכבי הלכת משפיעים על חייך</li>
-            <li>טרנזיטים ואירועים חשובים</li>
-            <li>אסטרולוגיה חינמית למתחילים</li>
+            <li>הבנת המפה האישית שלכם</li>
+            <li>כיצד כוכבי הלכת משפיעים על חייכם</li>
+            <li>אסטרולוגיה למתחילים ולמתקדמים</li>
+            <li>טרנזיטים ואירועים משמעותיים</li>
         </ul>
     </section>
 
     <!-- קורסים -->
     <section id="courses">
         <h2>קורסים והדרכה אישית</h2>
-        <p>למדו איתי באופן מקוון וקבלו הדרכה אישית:</p>
-        <div class="course-card">
-            <h3>קורס יסודות האסטרולוגיה</h3>
-            <p>קורס למתחילים שמסביר את הבסיס והעקרונות של האסטרולוגיה.</p>
-            <button>למידע נוסף ורכישה</button>
-        </div>
-        <div class="course-card">
-            <h3>קורס מתקדם למפת חיים</h3>
-            <p>לימוד מעמיק על המפה האישית שלך ופרשנות כוכבי הלכת.</p>
-            <button>למידע נוסף ורכישה</button>
+        <div class="courses-container">
+            <div class="course-card">
+                <div class="course-icon">🌟</div>
+                <h3>קורס יסודות האסטרולוגיה</h3>
+                <p>קורס למתחילים שמסביר את הבסיס והעקרונות של האסטרולוגיה.</p>
+                <button>לרכישה</button>
+            </div>
+            <div class="course-card">
+                <div class="course-icon">🪐</div>
+                <h3>קורס מתקדם למפת חיים</h3>
+                <p>לימוד מעמיק על המפה האישית שלכם ופרשנות כוכבי הלכת.</p>
+                <button>לרכישה</button>
+            </div>
+            <div class="course-card">
+                <div class="course-icon">🌙</div>
+                <h3>קורס חיזוי וטרנזיטים</h3>
+                <p>למדו כיצד להבין אירועים עתידיים דרך תנועות הכוכבים.</p>
+                <button>לרכישה</button>
+            </div>
         </div>
     </section>
 
