@@ -1,10 +1,24 @@
-// לחצן נגישות
-document.getElementById("accessibilityButton").addEventListener("click", function() {
-    if(document.body.style.backgroundColor !== "black") {
-        document.body.style.backgroundColor = "black";
-        document.body.style.color = "white";
-    } else {
-        document.body.style.backgroundColor = "#f5f3f7";
-        document.body.style.color = "#333";
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Cookie Consent
+    if (!localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookie-modal').style.display = 'block';
     }
+
+    document.getElementById('accept-cookies').addEventListener('click', function() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-modal').style.display = 'none';
+    });
+
+    // Accessibility
+    const accessBtn = document.getElementById('accessibility-btn');
+    let largeFont = false;
+    let highContrast = false;
+
+    accessBtn.addEventListener('click', function() {
+        largeFont = !largeFont;
+        highContrast = !highContrast;
+        document.body.classList.toggle('large-font', largeFont);
+        document.body.classList.toggle('high-contrast', highContrast);
+    });
 });
