@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אסטרולוגיה עם נועם לולאן</title>
     
+    <!-- SEO Basics -->
+    <title>אסטרולוגיה עם נועם לולאן | לימודים, הדרכות וקורסים אישיים</title>
+    <meta name="description" content="לימודי אסטרולוגיה מעמיקים עם נועם לולאן – קורסים מקוונים, מפות לידה אישיות, הדרכות פרטניות ומרכז ידע חינמי. התחבר למפה האישית שלך.">
+    <meta name="keywords" content="אסטרולוגיה, נועם לולאן, קורס אסטרולוגיה, מפת לידה, ייעוץ אסטרולוגי, לימודי אסטרולוגיה, אסטרולוגיה עברית">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="אסטרולוגיה עם נועם לולאן">
+    <meta property="og:description" content="למד אסטרולוגיה בצורה אישית ומעמיקה – קורסים, הדרכות ומרכז ידע חינמי.">
+    <meta property="og:image" content="https://i.postimg.cc/WzJrpG57/Screenshot-20260306-232738-Facebook.jpg">
+    <meta property="og:url" content="https://tennis-ashdod-online.github.io/Astrology-Noam-Lelann/">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
@@ -76,7 +88,17 @@
 
         main { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; }
 
-        section { margin-bottom: 5rem; }
+        section {
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         h2 {
             font-family: 'Playfair Display', serif;
@@ -119,7 +141,7 @@
 
         .course h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.5rem; }
 
-        button, .consult-btn {
+        button {
             background: linear-gradient(45deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
@@ -129,23 +151,43 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 8px 25px rgba(124,58,237,0.4);
-            display: inline-block;
-            text-decoration: none;
         }
 
-        button:hover, .consult-btn:hover {
+        button:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(124,58,237,0.6);
         }
 
-        .consult-btn {
-            background: linear-gradient(45deg, var(--accent), #f59e0b);
-            color: #0f0c29;
-            margin: 2rem auto;
-            display: block;
-            width: fit-content;
-            padding: 1.2rem 3rem;
-            font-size: 1.2rem;
+        /* טופס יצירת קשר – שולח לוואטסאפ */
+        #contact {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(30,27,68,0.6);
+            border-radius: 16px;
+            border: 1px solid rgba(124,58,237,0.3);
+        }
+
+        #contact input,
+        #contact textarea {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border: 1px solid rgba(124,58,237,0.5);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 1rem;
+        }
+
+        #contact input::placeholder,
+        #contact textarea::placeholder {
+            color: #b0a8d0;
+        }
+
+        #contact button {
+            width: 100%;
+            margin-top: 1rem;
         }
 
         .about-profile {
@@ -294,6 +336,7 @@
                 <li><a href="#info">מרכז מידע</a></li>
                 <li><a href="#courses">קורסים</a></li>
                 <li><a href="#about">אודות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
             </ul>
         </nav>
     </header>
@@ -357,23 +400,26 @@
                 שמי נועם לולאן, מומחה באסטרולוגיה עם ניסיון רב.
             </p>
 
-            <!-- תמונה אישית + טקסט קצר -->
             <div class="about-profile">
                 <img src="https://i.postimg.cc/WzJrpG57/Screenshot-20260306-232738-Facebook.jpg" alt="נועם לולאן">
                 <p>
                     "אני כאן כדי לעזור לך להבין את המפה האישית שלך ולנווט בחיים בצורה מודעת, מאוזנת ומשמעותית יותר."
                 </p>
             </div>
+        </section>
 
-            <div style="text-align:center;">
-                <button onclick="window.open('https://wa.me/+972538220279?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%20%3A%29', '_blank')">
-                    צור קשר בוואטסאפ
-                </button>
-            </div>
-
-            <a href="https://wa.me/+972538220279?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A4%D7%92%D7%99%D7%A9%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%AA%20%D7%97%D7%99%D7%A0%D7%9D%20(%D7%91%D7%9F%2030%20%D7%93%D7%A7%D7%95%D7%AA)" target="_blank" class="consult-btn">
-                קבע פגישת ייעוץ ראשונית חינם (30 דק')
-            </a>
+        <!-- טופס יצירת קשר – שולח לוואטסאפ -->
+        <section id="contact">
+            <h2>צור קשר</h2>
+            <form id="contact-form" onsubmit="sendToWhatsApp(event)">
+                <input type="text" id="name" placeholder="שם מלא" required>
+                <input type="tel" id="phone" placeholder="טלפון" required>
+                <textarea id="message" placeholder="הודעה / שאלה / בקשה" rows="6" required></textarea>
+                <button type="submit">שלח הודעה לוואטסאפ</button>
+            </form>
+            <p style="text-align:center; margin-top:1.5rem; font-size:0.95rem; color:#b0a8d0;">
+                נחזור אליך בהקדם האפשרי
+            </p>
         </section>
     </main>
 
@@ -397,6 +443,7 @@
         <p>נועם לולאן | veganox22@gmail.com</p>
     </footer>
 
+    <!-- Cookie Consent Modal -->
     <div id="cookie-modal" class="modal">
         <div class="modal-content">
             <p>אנו משתמשים בקובצי cookies כדי לשפר את החוויה שלך. האם אתה מאשר?</p>
@@ -404,9 +451,23 @@
         </div>
     </div>
 
+    <!-- כפתור נגישות -->
     <button id="accessibility-btn" title="נגישות">♿</button>
 
     <script>
+        // אנימציה לכניסת סעיפים
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Cookie Consent
         document.addEventListener('DOMContentLoaded', function() {
             if (!localStorage.getItem('cookiesAccepted')) {
                 document.getElementById('cookie-modal').style.display = 'flex';
@@ -417,6 +478,7 @@
                 document.getElementById('cookie-modal').style.display = 'none';
             });
 
+            // Accessibility Toggle
             const accessBtn = document.getElementById('accessibility-btn');
             let largeFont = false;
             let highContrast = false;
@@ -428,6 +490,33 @@
                 document.body.classList.toggle('high-contrast', highContrast);
             });
         });
+
+        // שליחה לוואטסאפ מהטופס
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !message) {
+                alert('נא למלא את כל השדות');
+                return;
+            }
+
+            // בניית הודעה מוכנה
+            const text = `היי נועם!%0A%0A` +
+                         `שם: ${encodeURIComponent(name)}%0A` +
+                         `טלפון: ${encodeURIComponent(phone)}%0A%0A` +
+                         `הודעה:%0A${encodeURIComponent(message)}`;
+
+            const whatsappUrl = `https://wa.me/+972538220279?text=${text}`;
+
+            window.open(whatsappUrl, '_blank');
+
+            // אופציונלי: נקה את הטופס אחרי שליחה
+            document.getElementById('contact-form').reset();
+        }
     </script>
 </body>
 </html>
