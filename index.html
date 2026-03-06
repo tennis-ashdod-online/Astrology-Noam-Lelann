@@ -199,10 +199,38 @@
             margin: 0.6rem 0;
         }
 
+        /* סטייל לאייקוני רשתות חברתיות */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(124,58,237,0.6);
+        }
+
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         /* כפתור נגישות – מוזז מעט למטה יותר */
         #accessibility-btn {
             position: fixed;
-            top: 100px;           /* ← השינוי כאן: מ-80px ל-100px */
+            top: 100px;
             right: 20px;
             width: 60px;
             height: 60px;
@@ -346,6 +374,20 @@
     <footer>
         <h3>צור קשר</h3>
         <p>טלפון: 053-822-0279</p>
+
+        <!-- אייקוני רשתות חברתיות -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1ZvRPhjXMG/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/noamlelann?igsh=M3hobmY3anF1dzJq" target="_blank" rel="noopener noreferrer" class="social-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://youtube.com/@lelannastrology?si=EZ3QQw68yY9LkvMa" target="_blank" rel="noopener noreferrer" class="social-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
+            </a>
+        </div>
+
         <p>כל הזכויות שמורות © אסטרולוגיה עם נועם לולאן - לימודים והדרכות 2026 | טל"ח</p>
         <p>נועם לולאן | veganox22@gmail.com</p>
     </footer>
