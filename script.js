@@ -8,19 +8,3 @@ document.getElementById("accessibilityButton").addEventListener("click", functio
         document.body.style.color = "#333";
     }
 });
-
-// אנימציה לגלילה של כרטיסי קורסים
-const cards = document.querySelectorAll('.course-card');
-
-function revealCards() {
-    const windowHeight = window.innerHeight;
-    cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        if(cardTop < windowHeight - 50) {
-            card.classList.add('visible');
-        }
-    });
-}
-
-window.addEventListener('scroll', revealCards);
-window.addEventListener('load', revealCards);
