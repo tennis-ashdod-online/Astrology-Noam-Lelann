@@ -26,6 +26,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
+        html {
+            scroll-behavior: smooth; /* גלילה חלקה */
+        }
+
         :root {
             --primary: #7c3aed;
             --primary-dark: #5b21b6;
@@ -573,11 +577,19 @@
                 document.body.classList.toggle('high-contrast', highContrast);
             });
 
-            // תיקון: גלילה לראש הדף אחרי טעינה (גם עם #hash בכתובת)
+            // תיקון חזק: גלילה לראש הדף אחרי טעינה (גם עם #hash בכתובת)
             window.addEventListener('load', () => {
+                // גלילה מיידית לראש
+                window.scrollTo({ top: 0, behavior: 'instant' });
+
+                // עיכוב קטן נוסף כדי להתמודד עם דפדפנים איטיים
                 setTimeout(() => {
-                    window.scrollTo(0, 0);
-                }, 100); // עיכוב קטן כדי לתת לדפדפן להתמקם קודם
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                    // הסרת ה-hash מה-URL בלי לרענן את הדף
+                    if (history.replaceState) {
+                        history.replaceState(null, null, ' ');
+                    }
+                }, 150);
             });
         });
 
