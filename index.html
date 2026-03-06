@@ -29,6 +29,10 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
     <style>
+        html {
+            scroll-behavior: smooth; /* גלילה חלקה בכל האתר */
+        }
+
         :root {
             --primary: #7c3aed;
             --primary-dark: #5b21b6;
@@ -401,6 +405,59 @@
         }
 
         .modal-content button { margin-top: 1.5rem; }
+
+        /* סגנון ל-FAQ */
+        .faq {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(124,58,237,0.3);
+        }
+
+        .faq-question {
+            background: rgba(30,27,68,0.6);
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            font-weight: 600;
+            color: var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(30,27,68,0.8);
+        }
+
+        .faq-question::after {
+            content: "▼";
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            background: rgba(20,17,48,0.7);
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            border-radius: 0 0 10px 10px;
+            color: #d1c4e9;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* התאם לפי הצורך */
+            padding: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -643,6 +700,28 @@
                 document.body.classList.toggle('large-font', largeFont);
                 document.body.classList.toggle('high-contrast', highContrast);
             });
+
+            // תיקון סופי לגלילה לראש הדף (גם עם #hash בכתובת)
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+
+            window.addEventListener('load', () => {
+                // גלילה מיידית לראש
+                scrollToTop();
+
+                // עיכוב נוסף למקרים של קפיצה מאוחרת
+                setTimeout(scrollToTop, 100);
+                setTimeout(scrollToTop, 300);
+
+                // הסרת ה-hash מה-URL (בלי רענון)
+                if (window.location.hash) {
+                    history.replaceState(null, null, window.location.pathname + window.location.search);
+                }
+            });
+
+            // גלילה לראש גם כשמשנים hash ידנית
+            window.addEventListener('hashchange', scrollToTop);
         });
 
         // שליחה לוואטסאפ מהטופס
