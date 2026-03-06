@@ -1,140 +1,128 @@
-/* פונט */
+/* style.css */
+/* Inspired by Astro-Charts and Astro.com: Clean, professional, neutral colors with astrology theme accents (blues, purples). Sans-serif fonts, minimalistic layout. */
+
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f3f7;
+    background-color: #f4f4f9;
     color: #333;
-    scroll-behavior: smooth;
+    direction: rtl;
+    text-align: right;
 }
 
-/* לחצן נגישות */
-#accessibilityButton {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #ffd700;
-    border: none;
-    padding: 12px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    z-index: 1000;
-}
-
-/* כותרת ראשית */
 header {
-    background: linear-gradient(135deg, #6b3e99, #4b2e83);
+    background-color: #4a4a8c; /* Purple-blue for astrology theme */
     color: white;
-    padding: 80px 20px;
+    padding: 20px;
     text-align: center;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    margin: 0;
 }
 
-header p {
-    font-size: 1.2rem;
+nav ul {
+    list-style: none;
+    padding: 0;
 }
 
-/* מרכז מידע */
-#info {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: auto;
-    text-align: right;
+nav ul li {
+    display: inline;
+    margin: 0 15px;
 }
 
-#info h2 {
-    color: #4b2e83;
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-#info ul {
-    list-style-type: disc;
-    padding-right: 20px;
-    margin-top: 10px;
-}
-
-/* קורסים */
-#courses {
-    background-color: #fff;
-    padding: 60px 20px;
-    text-align: center;
-}
-
-#courses h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    color: #4b2e83;
-}
-
-.courses-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.course-card {
-    background-color: #f7f5fb;
-    border-radius: 12px;
-    padding: 25px;
-    width: 280px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.course-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-.course-card h3 {
-    color: #532d9e;
-    margin-bottom: 10px;
-}
-
-.course-card p {
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-}
-
-.course-card button {
-    background-color: #6b3e99;
+nav a {
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.course-card button:hover {
-    background-color: #4b2e83;
-}
-
-/* פוטר */
-footer {
-    background-color: #6b3e99;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 40px;
-}
-
-footer a {
-    color: #ffeaa7;
     text-decoration: none;
 }
 
-footer a:hover {
-    text-decoration: underline;
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #4a4a8c;
+}
+
+.course {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4a4a8c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+footer {
+    background-color: #4a4a8c;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Cookie Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* Accessibility */
+.large-font {
+    font-size: 1.2em;
+}
+
+.high-contrast {
+    background-color: black;
+    color: white;
+}
+
+#accessibility-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4a4a8c;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
 }
