@@ -10,14 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('cookie-modal').style.display = 'none';
     });
 
-    // Accessibility
+    // Accessibility Toggle
     const accessBtn = document.getElementById('accessibility-btn');
     let largeFont = false;
     let highContrast = false;
 
     accessBtn.addEventListener('click', function() {
+        // ניתן להוסיף כאן תפריט נגישות מתקדם יותר בעתיד
+        // בינתיים - החלפה בין שתי אפשרויות
         largeFont = !largeFont;
         highContrast = !highContrast;
+
         document.body.classList.toggle('large-font', largeFont);
         document.body.classList.toggle('high-contrast', highContrast);
     });
