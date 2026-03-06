@@ -1,4 +1,4 @@
-// script.js
+// script.js – ללא שינוי (הכל נשאר כפי שהיה)
 document.addEventListener('DOMContentLoaded', function() {
     // Cookie Consent
     if (!localStorage.getItem('cookiesAccepted')) {
@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let highContrast = false;
 
     accessBtn.addEventListener('click', function() {
-        // ניתן להוסיף כאן תפריט נגישות מתקדם יותר בעתיד
-        // בינתיים - החלפה בין שתי אפשרויות
         largeFont = !largeFont;
         highContrast = !highContrast;
 
