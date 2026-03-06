@@ -25,11 +25,10 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Particles.js for background stars -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
     <style>
-        html {
-            scroll-behavior: smooth; /* גלילה חלקה */
-        }
-
         :root {
             --primary: #7c3aed;
             --primary-dark: #5b21b6;
@@ -50,6 +49,17 @@
             overflow-x: hidden;
         }
 
+        /* Particles container – כוכבים נעים */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -3;
+            pointer-events: none;
+        }
+
         body::before {
             content: "";
             position: fixed;
@@ -66,6 +76,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 2rem;
+            position: relative;
+            z-index: 100;
         }
 
         .hamburger {
@@ -132,7 +144,7 @@
 
         .nav-menu.active .close-btn { display: block; }
 
-        main { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; }
+        main { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; position: relative; z-index: 10; }
 
         section {
             margin-bottom: 5rem;
@@ -308,6 +320,8 @@
             border-top: 1px solid rgba(124,58,237,0.2);
             font-size: 0.95rem;
             color: #c4b5fd;
+            position: relative;
+            z-index: 10;
         }
 
         footer h3 { color: var(--accent); margin-bottom: 1.2rem; font-size: 1.4rem; }
@@ -390,6 +404,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Particles background – כוכבים נעים -->
+    <div id="particles-js"></div>
 
     <header>
         <div class="header-container">
@@ -522,7 +539,58 @@
     <button id="accessibility-btn" title="נגישות">♿</button>
 
     <script>
-        // Hamburger Menu Toggle (פתיחה + סגירה באותו כפתור)
+        // Particles.js – כוכבים נעים ברקע
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { "value": "#ffffff" },
+                "shape": {
+                    "type": "circle",
+                    "stroke": { "width": 0, "color": "#000000" }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                    "anim": { "enable": false }
+                },
+                "size": {
+                    "value": 2,
+                    "random": true,
+                    "anim": { "enable": false }
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": { "enable": false }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "bubble" },
+                    "onclick": { "enable": true, "mode": "repulse" },
+                    "resize": true
+                },
+                "modes": {
+                    "bubble": { "distance": 200, "size": 4, "duration": 2, "opacity": 0.8 },
+                    "repulse": { "distance": 200, "duration": 0.4 }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Hamburger Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const closeBtn = document.getElementById('close-btn');
@@ -535,7 +603,6 @@
             navMenu.classList.remove('active');
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
                 navMenu.classList.remove('active');
@@ -575,21 +642,6 @@
                 highContrast = !highContrast;
                 document.body.classList.toggle('large-font', largeFont);
                 document.body.classList.toggle('high-contrast', highContrast);
-            });
-
-            // תיקון חזק: גלילה לראש הדף אחרי טעינה (גם עם #hash בכתובת)
-            window.addEventListener('load', () => {
-                // גלילה מיידית לראש
-                window.scrollTo({ top: 0, behavior: 'instant' });
-
-                // עיכוב קטן נוסף כדי להתמודד עם דפדפנים איטיים
-                setTimeout(() => {
-                    window.scrollTo({ top: 0, behavior: 'instant' });
-                    // הסרת ה-hash מה-URL בלי לרענן את הדף
-                    if (history.replaceState) {
-                        history.replaceState(null, null, ' ');
-                    }
-                }, 150);
             });
         });
 
