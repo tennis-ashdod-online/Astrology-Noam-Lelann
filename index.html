@@ -4,20 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Basics + Enhanced -->
     <title>אסטרולוגיה עם נועם לולאן | לימודים, הדרכות וקורסים אישיים</title>
     <meta name="description" content="לימודי אסטרולוגיה מעמיקים עם נועם לולאן – קורסים מקוונים, מפות לידה אישיות, הדרכות פרטניות ומרכז ידע חינמי. התחבר למפה האישית שלך.">
     <meta name="keywords" content="אסטרולוגיה, נועם לולאן, קורס אסטרולוגיה, מפת לידה, ייעוץ אסטרולוגי, לימודי אסטרולוגיה, אסטרולוגיה עברית">
-    <meta name="author" content="נועם לולאן">
-    <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Social Sharing -->
+    <!-- Open Graph -->
     <meta property="og:title" content="אסטרולוגיה עם נועם לולאן">
     <meta property="og:description" content="למד אסטרולוגיה בצורה אישית ומעמיקה – קורסים, הדרכות ומרכז ידע חינמי.">
     <meta property="og:image" content="https://i.postimg.cc/WzJrpG57/Screenshot-20260306-232738-Facebook.jpg">
     <meta property="og:url" content="https://tennis-ashdod-online.github.io/Astrology-Noam-Lelann/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="he_IL">
     
     <!-- Favicon -->
     <link rel="icon" href="https://img.icons8.com/fluency/48/000000/star.png" type="image/png">
@@ -25,12 +20,12 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Particles.js for background stars -->
+    <!-- Particles.js for static stars -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
     <style>
         html {
-            scroll-behavior: smooth; /* גלילה חלקה בכל האתר */
+            scroll-behavior: smooth;
         }
 
         :root {
@@ -53,7 +48,7 @@
             overflow-x: hidden;
         }
 
-        /* Particles container – כוכבים נעים */
+        /* Particles container – כוכבים נעים קבועים */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -64,13 +59,38 @@
             pointer-events: none;
         }
 
+        /* Shooting stars container – כוכבים נופלים */
+        #shooting-stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 3px;
+            height: 80px; /* אורך הזנב */
+            background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(251,191,36,0.6), transparent);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 40px var(--accent);
+            transform-origin: top;
+            opacity: 0;
+            pointer-events: none;
+            will-change: transform, opacity;
+        }
+
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
             opacity: 0.08;
-            z-index: -2;
+            z-index: -4;
             pointer-events: none;
         }
 
@@ -405,65 +425,15 @@
         }
 
         .modal-content button { margin-top: 1.5rem; }
-
-        /* סגנון ל-FAQ */
-        .faq {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(124,58,237,0.3);
-        }
-
-        .faq-question {
-            background: rgba(30,27,68,0.6);
-            padding: 1.2rem 1.5rem;
-            cursor: pointer;
-            border-radius: 10px 10px 0 0;
-            font-weight: 600;
-            color: var(--accent);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-
-        .faq-question:hover {
-            background: rgba(30,27,68,0.8);
-        }
-
-        .faq-question::after {
-            content: "▼";
-            font-size: 1.2rem;
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-question::after {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            background: rgba(20,17,48,0.7);
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            border-radius: 0 0 10px 10px;
-            color: #d1c4e9;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px; /* התאם לפי הצורך */
-            padding: 1.5rem;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Particles background – כוכבים נעים -->
+    <!-- Particles background – כוכבים נעים קבועים -->
     <div id="particles-js"></div>
+
+    <!-- Shooting stars container – כוכבים נופלים -->
+    <div id="shooting-stars"></div>
 
     <header>
         <div class="header-container">
@@ -596,55 +566,70 @@
     <button id="accessibility-btn" title="נגישות">♿</button>
 
     <script>
-        // Particles.js – כוכבים נעים ברקע
+        // Particles.js – כוכבים נעים קבועים
         particlesJS("particles-js", {
             "particles": {
-                "number": {
-                    "value": 80,
-                    "density": { "enable": true, "value_area": 800 }
-                },
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#ffffff" },
-                "shape": {
-                    "type": "circle",
-                    "stroke": { "width": 0, "color": "#000000" }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": { "enable": false }
-                },
-                "size": {
-                    "value": 2,
-                    "random": true,
-                    "anim": { "enable": false }
-                },
-                "line_linked": {
-                    "enable": false
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": { "enable": false }
-                }
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 2, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1, "random": true, "out_mode": "out" }
             },
             "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "bubble" },
-                    "onclick": { "enable": true, "mode": "repulse" },
-                    "resize": true
-                },
-                "modes": {
-                    "bubble": { "distance": 200, "size": 4, "duration": 2, "opacity": 0.8 },
-                    "repulse": { "distance": 200, "duration": 0.4 }
-                }
+                "events": { "onhover": { "enable": true, "mode": "bubble" } },
+                "modes": { "bubble": { "distance": 200, "size": 4, "duration": 2 } }
             },
             "retina_detect": true
+        });
+
+        // אנימציית כוכב נופל
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            
+            // מיקום התחלתי אקראי בחלק העליון
+            const startX = Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1;
+            const startY = -100;
+            
+            star.style.left = startX + 'px';
+            star.style.top = startY + 'px';
+            
+            // זווית ואורך אקראיים
+            const angle = Math.random() * 30 + 30; // 30–60 מעלות
+            const duration = Math.random() * 2 + 1.5; // 1.5–3.5 שניות
+            
+            star.style.transform = `rotate(${angle}deg)`;
+            
+            document.getElementById('shooting-stars').appendChild(star);
+            
+            // אנימציה – נפילה אלכסונית + התפוגגות
+            star.animate([
+                { opacity: 0, transform: `translate(0, 0) rotate(${angle}deg)` },
+                { opacity: 1, transform: `translate(${window.innerWidth * 0.8}px, \( {window.innerHeight * 0.8}px) rotate( \){angle}deg)`, offset: 0.2 },
+                { opacity: 0.8, transform: `translate(${window.innerWidth * 1.2}px, \( {window.innerHeight * 1.2}px) rotate( \){angle}deg)`, offset: 0.6 },
+                { opacity: 0, transform: `translate(${window.innerWidth * 1.5}px, \( {window.innerHeight * 1.5}px) rotate( \){angle}deg)` }
+            ], {
+                duration: duration * 1000,
+                easing: 'linear',
+                fill: 'forwards'
+            });
+            
+            // הסרה אחרי סיום
+            setTimeout(() => star.remove(), duration * 1000 + 1000);
+        }
+
+        // יצירת כוכב נופל כל 8–20 שניות באקראי
+        function shootStarRandomly() {
+            createShootingStar();
+            const next = Math.random() * 12000 + 8000; // 8–20 שניות
+            setTimeout(shootStarRandomly, next);
+        }
+
+        // התחל את האנימציה אחרי טעינת הדף
+        window.addEventListener('load', () => {
+            shootStarRandomly();
         });
 
         // Hamburger Menu Toggle
@@ -700,28 +685,6 @@
                 document.body.classList.toggle('large-font', largeFont);
                 document.body.classList.toggle('high-contrast', highContrast);
             });
-
-            // תיקון סופי לגלילה לראש הדף (גם עם #hash בכתובת)
-            function scrollToTop() {
-                window.scrollTo({ top: 0, behavior: 'instant' });
-            }
-
-            window.addEventListener('load', () => {
-                // גלילה מיידית לראש
-                scrollToTop();
-
-                // עיכוב נוסף למקרים של קפיצה מאוחרת
-                setTimeout(scrollToTop, 100);
-                setTimeout(scrollToTop, 300);
-
-                // הסרת ה-hash מה-URL (בלי רענון)
-                if (window.location.hash) {
-                    history.replaceState(null, null, window.location.pathname + window.location.search);
-                }
-            });
-
-            // גלילה לראש גם כשמשנים hash ידנית
-            window.addEventListener('hashchange', scrollToTop);
         });
 
         // שליחה לוואטסאפ מהטופס
