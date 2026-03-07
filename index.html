@@ -4,20 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- SEO Basics + Enhanced -->
     <title>אסטרולוגיה עם נועם לולאן | לימודים, הדרכות וקורסים אישיים</title>
-    <meta name="description" content="לימודי אסטרולוגיה מעמיקים עם נועם לולאן – קורסים מקוונים, מפות לידה אישיות, הדרכות פרטניות ומרכז ידע חינמי.">
+    <meta name="description" content="לימודי אסטרולוגיה מעמיקים עם נועם לולאן – קורסים מקוונים, מפות לידה אישיות, הדרכות פרטניות ומרכז ידע חינמי. התחבר למפה האישית שלך.">
+    <meta name="keywords" content="אסטרולוגיה, נועם לולאן, קורס אסטרולוגיה, מפת לידה, ייעוץ אסטרולוגי, לימודי אסטרולוגיה, אסטרולוגיה עברית">
+    <meta name="author" content="נועם לולאן">
+    <meta name="robots" content="index, follow">
     
+    <!-- Open Graph / Social Sharing -->
     <meta property="og:title" content="אסטרולוגיה עם נועם לולאן">
     <meta property="og:description" content="למד אסטרולוגיה בצורה אישית ומעמיקה – קורסים, הדרכות ומרכז ידע חינמי.">
     <meta property="og:image" content="https://i.postimg.cc/WzJrpG57/Screenshot-20260306-232738-Facebook.jpg">
     <meta property="og:url" content="https://tennis-ashdod-online.github.io/Astrology-Noam-Lelann/">
-
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Favicon -->
     <link rel="icon" href="https://img.icons8.com/fluency/48/000000/star.png" type="image/png">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Particles.js for background stars -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
+    
     <style>
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth; /* גלילה חלקה בכל האתר */
+        }
 
         :root {
             --primary: #7c3aed;
@@ -39,38 +53,15 @@
             overflow-x: hidden;
         }
 
+        /* Particles container – כוכבים נעים */
         #particles-js {
             position: fixed;
             width: 100%;
             height: 100%;
-            top: 0; left: 0;
+            top: 0;
+            left: 0;
             z-index: -3;
             pointer-events: none;
-        }
-
-        #shooting-stars {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            pointer-events: none;
-            z-index: -2;
-            overflow: hidden;
-        }
-
-        .shooting-star {
-            position: absolute;
-            width: 5px;
-            height: 180px;               /* זנב ארוך מאוד – בולט */
-            background: linear-gradient(to bottom, #ffffff 10%, #fbbf24 50%, transparent 100%);
-            border-radius: 50%;
-            box-shadow: 
-                0 0 50px #ffffff,
-                0 0 100px #fbbf24,
-                0 0 150px #fbbf24;
-            opacity: 0;
-            transform-origin: top;
-            will-change: transform, opacity;
         }
 
         body::before {
@@ -79,39 +70,31 @@
             inset: 0;
             background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
             opacity: 0.08;
-            z-index: -4;
+            z-index: -2;
             pointer-events: none;
         }
 
+        /* Hamburger Menu */
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 2rem;
-            position: sticky;
-            top: 0;
-            background: rgba(15,12,41,0.85);
-            backdrop-filter: blur(10px);
+            position: relative;
             z-index: 100;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin: 0;
         }
 
         .hamburger {
             display: none;
-            font-size: 2.2rem;
+            font-size: 2rem;
             cursor: pointer;
             color: var(--accent);
+            z-index: 1100;
         }
 
         .nav-menu {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .nav-menu a {
@@ -123,30 +106,41 @@
 
         .nav-menu a:hover { color: var(--accent); }
 
+        /* Mobile Menu */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-menu {
                 position: fixed;
-                top: 0; right: -100%;
-                width: 80%;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
                 height: 100%;
-                background: rgba(15,12,41,0.98);
-                backdrop-filter: blur(12px);
+                background: rgba(11,9,38,0.95);
+                backdrop-filter: blur(10px);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 transition: right 0.4s ease;
-                z-index: 999;
+                z-index: 1000;
             }
-            .nav-menu.active { right: 0; }
-            .nav-menu a { font-size: 1.8rem; margin: 2rem 0; }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu a {
+                font-size: 1.5rem;
+                margin: 1.5rem 0;
+            }
         }
 
+        /* Close Button for Mobile */
         .close-btn {
             position: absolute;
             top: 2rem;
             left: 2rem;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--accent);
             cursor: pointer;
             display: none;
@@ -154,13 +148,13 @@
 
         .nav-menu.active .close-btn { display: block; }
 
-        main { max-width: 1100px; margin: 4rem auto; padding: 0 1.5rem; position: relative; z-index: 10; }
+        main { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; position: relative; z-index: 10; }
 
         section {
-            margin-bottom: 6rem;
+            margin-bottom: 5rem;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.9s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         section.visible {
@@ -170,16 +164,16 @@
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             color: var(--accent);
             text-align: center;
             margin-bottom: 2rem;
-            text-shadow: 0 4px 20px rgba(251,191,36,0.3);
+            text-shadow: 0 2px 10px rgba(251,191,36,0.2);
         }
 
         .intro-text {
-            font-size: 1.2rem;
-            line-height: 1.9;
+            font-size: 1.15rem;
+            line-height: 1.8;
             max-width: 800px;
             margin: 0 auto 3rem;
             text-align: center;
@@ -189,87 +183,117 @@
         .course-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .course {
-            background: rgba(30,27,68,0.65);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(124,58,237,0.3);
-            border-radius: 20px;
-            padding: 2.2rem;
+            background: rgba(30,27,68,0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(124,58,237,0.25);
+            border-radius: 16px;
+            padding: 2rem;
             transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .course:hover {
-            transform: translateY(-15px) scale(1.04);
-            box-shadow: 0 30px 70px rgba(124,58,237,0.45);
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(124,58,237,0.4);
             border-color: var(--accent);
         }
 
-        .course h3 { color: var(--accent); margin-bottom: 1.2rem; font-size: 1.6rem; }
+        .course h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.5rem; }
 
         button {
             background: linear-gradient(45deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
-            padding: 1rem 2.2rem;
+            padding: 0.9rem 2rem;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(124,58,237,0.5);
+            box-shadow: 0 8px 25px rgba(124,58,237,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.7s ease;
+        }
+
+        button:hover::before {
+            left: 150%;
         }
 
         button:hover {
-            transform: translateY(-4px) scale(1.06);
+            transform: translateY(-5px) scale(1.08);
             box-shadow: 0 20px 50px rgba(124,58,237,0.7);
         }
 
-        /* טופס צור קשר */
+        /* טופס יצירת קשר – שולח לוואטסאפ */
         #contact {
             max-width: 600px;
             margin: 0 auto;
-            padding: 2.5rem;
-            background: rgba(30,27,68,0.65);
-            border-radius: 20px;
+            padding: 2rem;
+            background: rgba(30,27,68,0.6);
+            border-radius: 16px;
             border: 1px solid rgba(124,58,237,0.3);
         }
 
-        #contact input, #contact textarea {
+        #contact input,
+        #contact textarea {
             width: 100%;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0;
+            border-radius: 10px;
             border: 1px solid rgba(124,58,237,0.5);
             background: rgba(255,255,255,0.08);
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+
+        #contact input::placeholder,
+        #contact textarea::placeholder {
+            color: #b0a8d0;
         }
 
         #contact button {
             width: 100%;
-            margin-top: 1.5rem;
-            padding: 1.2rem;
-            font-size: 1.2rem;
+            margin-top: 1rem;
         }
 
         .about-profile {
             text-align: center;
-            margin: 4rem 0 2rem;
+            margin: 3rem 0 2rem;
         }
 
         .about-profile img {
-            width: 240px;
-            height: 240px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
-            border: 6px solid var(--accent);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            margin-bottom: 2rem;
+            border: 5px solid var(--accent);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            margin-bottom: 1.5rem;
         }
 
-        .video-section { margin: 6rem 0; text-align: center; }
+        .about-profile p {
+            font-style: italic;
+            color: #d1c4e9;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .video-section { margin: 5rem 0; text-align: center; }
 
         .video-wrapper {
             position: relative;
@@ -277,63 +301,73 @@
             height: 0;
             overflow: hidden;
             max-width: 900px;
-            margin: 3rem auto;
-            border-radius: 20px;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            background: #000;
         }
 
         .video-wrapper iframe {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         footer {
-            background: rgba(11,9,38,0.92);
-            backdrop-filter: blur(12px);
-            padding: 4rem 1.5rem 3rem;
+            background: rgba(11,9,38,0.9);
+            backdrop-filter: blur(10px);
+            padding: 3rem 1rem 2rem;
             text-align: center;
-            border-top: 1px solid rgba(124,58,237,0.3);
+            border-top: 1px solid rgba(124,58,237,0.2);
+            font-size: 0.95rem;
+            color: #c4b5fd;
             position: relative;
             z-index: 10;
         }
 
-        footer h3 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.6rem; }
+        footer h3 { color: var(--accent); margin-bottom: 1.2rem; font-size: 1.4rem; }
+
+        footer p { margin: 0.6rem 0; }
 
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0 2.5rem;
+            gap: 1.8rem;
+            margin: 1.5rem 0 2rem;
         }
 
         .social-icon {
-            width: 55px;
-            height: 55px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .social-icon:hover {
-            transform: scale(1.2);
-            box-shadow: 0 12px 40px rgba(124,58,237,0.7);
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(124,58,237,0.6);
         }
+
+        .social-icon img { width:100%; height:100%; object-fit:cover; }
 
         #accessibility-btn {
             position: fixed;
-            top: 140px;
-            right: 25px;
-            width: 65px;
-            height: 65px;
+            top: 130px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 34px;
+            font-size: 32px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(124,58,237,0.6);
+            box-shadow: 0 8px 25px rgba(124,58,237,0.5);
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -343,7 +377,86 @@
 
         #accessibility-btn:hover {
             transform: scale(1.15);
-            box-shadow: 0 15px 45px rgba(124,58,237,0.8);
+            box-shadow: 0 12px 35px rgba(124,58,237,0.7);
+        }
+
+        .large-font { font-size: 1.25em !important; line-height: 1.7; }
+        .high-contrast { background:#000 !important; color:#fff !important; }
+        .high-contrast * { background:#000 !important; color:#fff !important; border-color:#fff !important; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(30,27,68,0.95);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 420px;
+            text-align: center;
+            border: 1px solid rgba(251,191,36,0.3);
+        }
+
+        .modal-content button { margin-top: 1.5rem; }
+
+        /* סגנון ל-FAQ */
+        .faq {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(124,58,237,0.3);
+        }
+
+        .faq-question {
+            background: rgba(30,27,68,0.6);
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            font-weight: 600;
+            color: var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(30,27,68,0.8);
+        }
+
+        .faq-question::after {
+            content: "▼";
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            background: rgba(20,17,48,0.7);
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            border-radius: 0 0 10px 10px;
+            color: #d1c4e9;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* התאם לפי הצורך */
+            padding: 1.5rem;
         }
     </style>
 </head>
@@ -352,15 +465,13 @@
     <!-- Particles background – כוכבים נעים -->
     <div id="particles-js"></div>
 
-    <!-- Shooting stars – כוכבים נופלים -->
-    <div id="shooting-stars"></div>
-
     <header>
         <div class="header-container">
             <h1>אסטרולוגיה עם נועם לולאן</h1>
             <div class="hamburger" id="hamburger">☰</div>
         </div>
 
+        <!-- Mobile Menu -->
         <nav class="nav-menu" id="nav-menu">
             <span class="close-btn" id="close-btn">×</span>
             <a href="#home">בית</a>
@@ -413,19 +524,32 @@
         <div class="video-section">
             <h2>הצצה קטנה מהדברים שאני מלמד על אסטרולוגיה</h2>
             <div class="video-wrapper">
-                <iframe src="https://www.youtube-nocookie.com/embed/CtsvYL33PRo?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3" 
-                        title="הצצה לאסטרולוגיה עם נועם לולאן" frameborder="0" allowfullscreen></iframe>
+                <iframe 
+                    src="https://www.youtube-nocookie.com/embed/CtsvYL33PRo?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3" 
+                    title="הצצה לאסטרולוגיה עם נועם לולאן" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
             </div>
         </div>
 
         <section id="about">
             <h2>אודות</h2>
+            <p style="text-align:center; max-width:800px; margin:0 auto 1rem; font-size:1.15rem; line-height:1.8;">
+                שמי נועם לולאן, מומחה באסטרולוגיה עם ניסיון רב.
+            </p>
+
             <div class="about-profile">
                 <img src="https://i.postimg.cc/WzJrpG57/Screenshot-20260306-232738-Facebook.jpg" alt="נועם לולאן">
-                <p>"אני כאן כדי לעזור לך להבין את המפה האישית שלך ולנווט בחיים בצורה מודעת, מאוזנת ומשמעותית יותר."</p>
+                <p>
+                    "אני כאן כדי לעזור לך להבין את המפה האישית שלך ולנווט בחיים בצורה מודעת, מאוזנת ומשמעותית יותר."
+                </p>
             </div>
         </section>
 
+        <!-- טופס יצירת קשר – שולח לוואטסאפ -->
         <section id="contact">
             <h2>צור קשר</h2>
             <form id="contact-form" onsubmit="sendToWhatsApp(event)">
@@ -434,6 +558,9 @@
                 <textarea id="message" placeholder="הודעה / שאלה / בקשה" rows="6" required></textarea>
                 <button type="submit">שלח הודעה לוואטסאפ</button>
             </form>
+            <p style="text-align:center; margin-top:1.5rem; font-size:0.95rem; color:#b0a8d0;">
+                נחזור אליך בהקדם האפשרי
+            </p>
         </section>
     </main>
 
@@ -442,21 +569,22 @@
         <p>טלפון: 053-822-0279</p>
 
         <div class="social-icons">
-            <a href="https://www.facebook.com/share/1ZvRPhjXMG/" target="_blank" class="social-icon">
+            <a href="https://www.facebook.com/share/1ZvRPhjXMG/" target="_blank" rel="noopener noreferrer" class="social-icon">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
             </a>
-            <a href="https://www.instagram.com/noamlelann?igsh=M3hobmY3anF1dzJq" target="_blank" class="social-icon">
+            <a href="https://www.instagram.com/noamlelann?igsh=M3hobmY3anF1dzJq" target="_blank" rel="noopener noreferrer" class="social-icon">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
             </a>
-            <a href="https://youtube.com/@lelannastrology?si=EZ3QQw68yY9LkvMa" target="_blank" class="social-icon">
+            <a href="https://youtube.com/@lelannastrology?si=EZ3QQw68yY9LkvMa" target="_blank" rel="noopener noreferrer" class="social-icon">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
             </a>
         </div>
 
-        <p>כל הזכויות שמורות © אסטרולוגיה עם נועם לולאן 2026 | טל"ח</p>
+        <p>כל הזכויות שמורות © אסטרולוגיה עם נועם לולאן - לימודים והדרכות 2026 | טל"ח</p>
+        <p>נועם לולאן | veganox22@gmail.com</p>
     </footer>
 
-    <!-- Cookie Modal -->
+    <!-- Cookie Consent Modal -->
     <div id="cookie-modal" class="modal">
         <div class="modal-content">
             <p>אנו משתמשים בקובצי cookies כדי לשפר את החוויה שלך. האם אתה מאשר?</p>
@@ -464,118 +592,164 @@
         </div>
     </div>
 
-    <!-- נגישות -->
+    <!-- כפתור נגישות -->
     <button id="accessibility-btn" title="נגישות">♿</button>
 
     <script>
-        // Particles.js – כוכבים נעים
+        // Particles.js – כוכבים נעים ברקע
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 80 },
+                "number": {
+                    "value": 80,
+                    "density": { "enable": true, "value_area": 800 }
+                },
                 "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": true },
-                "size": { "value": 2, "random": true },
-                "move": { "enable": true, "speed": 1, "random": true, "out_mode": "out" }
+                "shape": {
+                    "type": "circle",
+                    "stroke": { "width": 0, "color": "#000000" }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                    "anim": { "enable": false }
+                },
+                "size": {
+                    "value": 2,
+                    "random": true,
+                    "anim": { "enable": false }
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": { "enable": false }
+                }
             },
-            "interactivity": { "events": { "onhover": { "enable": true, "mode": "bubble" } } }
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "bubble" },
+                    "onclick": { "enable": true, "mode": "repulse" },
+                    "resize": true
+                },
+                "modes": {
+                    "bubble": { "distance": 200, "size": 4, "duration": 2, "opacity": 0.8 },
+                    "repulse": { "distance": 200, "duration": 0.4 }
+                }
+            },
+            "retina_detect": true
         });
 
-        // כוכב נופל – גרסה מאוד בולטת
-        function createShootingStar() {
-            const star = document.createElement('div');
-            star.className = 'shooting-star';
-
-            const startX = Math.random() * window.innerWidth;
-            star.style.left = startX + 'px';
-            star.style.top = '-250px';
-
-            const angle = 35 + Math.random() * 50;
-            const duration = 1.8 + Math.random() * 1.2;
-
-            star.style.transform = `rotate(${angle}deg)`;
-
-            document.getElementById('shooting-stars').appendChild(star);
-
-            star.animate([
-                { opacity: 0, transform: `translate(0, 0) rotate(${angle}deg)` },
-                { opacity: 1, transform: `translate(${window.innerWidth * 0.8}px, \( {window.innerHeight * 0.8}px) rotate( \){angle}deg)`, offset: 0.2 },
-                { opacity: 0.95, transform: `translate(${window.innerWidth * 1.2}px, \( {window.innerHeight * 1.2}px) rotate( \){angle}deg)`, offset: 0.5 },
-                { opacity: 0, transform: `translate(${window.innerWidth * 1.8}px, \( {window.innerHeight * 1.8}px) rotate( \){angle}deg)` }
-            ], {
-                duration: duration * 1000,
-                easing: 'linear',
-                fill: 'forwards'
-            });
-
-            setTimeout(() => star.remove(), duration * 1000 + 1000);
-        }
-
-        function startShootingStars() {
-            createShootingStar();
-            const next = Math.random() * 9000 + 6000; // 6–15 שניות
-            setTimeout(startShootingStars, next);
-        }
-
-        window.addEventListener('load', () => {
-            setTimeout(startShootingStars, 1500); // מתחיל תוך 1.5–2 שניות
-        });
-
-        // Hamburger Menu
+        // Hamburger Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const closeBtn = document.getElementById('close-btn');
 
-        hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
-        closeBtn.addEventListener('click', () => navMenu.classList.remove('active'));
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
-        document.addEventListener('click', e => {
+        closeBtn.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+
+        document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
                 navMenu.classList.remove('active');
             }
         });
 
-        // אנימציית כניסה לסעיפים
+        // אנימציה לכניסת סעיפים
         const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
         }, { threshold: 0.1 });
 
-        sections.forEach(sec => observer.observe(sec));
+        sections.forEach(section => observer.observe(section));
 
         // Cookie Consent
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             if (!localStorage.getItem('cookiesAccepted')) {
                 document.getElementById('cookie-modal').style.display = 'flex';
             }
-            document.getElementById('accept-cookies').onclick = () => {
+
+            document.getElementById('accept-cookies').addEventListener('click', function() {
                 localStorage.setItem('cookiesAccepted', 'true');
                 document.getElementById('cookie-modal').style.display = 'none';
-            };
+            });
 
-            // נגישות
+            // Accessibility Toggle
             const accessBtn = document.getElementById('accessibility-btn');
-            let large = false, contrast = false;
-            accessBtn.onclick = () => {
-                large = !large; contrast = !contrast;
-                document.body.classList.toggle('large-font', large);
-                document.body.classList.toggle('high-contrast', contrast);
-            };
+            let largeFont = false;
+            let highContrast = false;
+
+            accessBtn.addEventListener('click', function() {
+                largeFont = !largeFont;
+                highContrast = !highContrast;
+                document.body.classList.toggle('large-font', largeFont);
+                document.body.classList.toggle('high-contrast', highContrast);
+            });
+
+            // תיקון סופי לגלילה לראש הדף (גם עם #hash בכתובת)
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+
+            window.addEventListener('load', () => {
+                // גלילה מיידית לראש
+                scrollToTop();
+
+                // עיכוב נוסף למקרים של קפיצה מאוחרת
+                setTimeout(scrollToTop, 100);
+                setTimeout(scrollToTop, 300);
+
+                // הסרת ה-hash מה-URL (בלי רענון)
+                if (window.location.hash) {
+                    history.replaceState(null, null, window.location.pathname + window.location.search);
+                }
+            });
+
+            // גלילה לראש גם כשמשנים hash ידנית
+            window.addEventListener('hashchange', scrollToTop);
         });
 
-        // וואטסאפ
-        function sendToWhatsApp(e) {
-            e.preventDefault();
+        // שליחה לוואטסאפ מהטופס
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
-            const msg = document.getElementById('message').value.trim();
-            if (!name || !phone || !msg) return alert('מלא את כל השדות');
-            const text = `היי נועם!%0A%0Aשם: ${encodeURIComponent(name)}%0Aטלפון: \( {encodeURIComponent(phone)}%0A%0Aהודעה:%0A \){encodeURIComponent(msg)}`;
-            window.open(`https://wa.me/+972538220279?text=${text}`, '_blank');
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !message) {
+                alert('נא למלא את כל השדות');
+                return;
+            }
+
+            const text = `היי נועם!%0A%0A` +
+                         `שם: ${encodeURIComponent(name)}%0A` +
+                         `טלפון: ${encodeURIComponent(phone)}%0A%0A` +
+                         `הודעה:%0A${encodeURIComponent(message)}`;
+
+            const whatsappUrl = `https://wa.me/+972538220279?text=${text}`;
+
+            window.open(whatsappUrl, '_blank');
+
             document.getElementById('contact-form').reset();
         }
     </script>
 </body>
 </html>
+
+בו נחזור אל הקוד הזה
