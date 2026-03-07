@@ -289,7 +289,7 @@
             color: #d1c4e9;
             font-size: 1.1rem;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
             line-height: 1.7;
         }
 
@@ -399,12 +399,34 @@
             backdrop-filter: blur(12px);
             padding: 2.5rem;
             border-radius: 20px;
-            max-width: 420px;
+            max-width: 700px;
             text-align: center;
             border: 1px solid rgba(251,191,36,0.3);
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .modal-content button { margin-top: 1.5rem; }
+
+        .modal-content h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            text-align: right;
+            line-height: 1.7;
+            color: #d1c4e9;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 2rem;
+            color: var(--accent);
+            cursor: pointer;
+        }
 
         /* סגנון ל-FAQ */
         .faq {
@@ -458,6 +480,77 @@
             max-height: 500px; /* התאם לפי הצורך */
             padding: 1.5rem;
         }
+
+        /* תוספת סגנון למרכז מידע - מאמרים */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .article-card {
+            background: rgba(30,27,68,0.6);
+            border: 1px solid rgba(124,58,237,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(124,58,237,0.3);
+        }
+
+        .article-card h4 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .article-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d1c4e9;
+        }
+
+        .article-card .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        .article-card .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* המלצות */
+        .testimonials {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(30,27,68,0.5);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid rgba(251,191,36,0.2);
+            font-style: italic;
+            color: #e0d4ff;
+        }
+
+        .testimonial cite {
+            display: block;
+            margin-top: 1rem;
+            font-style: normal;
+            color: var(--accent);
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -494,13 +587,46 @@
         <section id="info">
             <h2>מרכז מידע</h2>
             <p style="text-align:center; max-width:800px; margin:0 auto 2rem; color:#d1c4e9;">
-                כאן תמצאו מאמרים, טיפים ומשאבים על אסטרולוגיה. לדוגמה:
+                כאן תמצאו מדריכים, מאמרים וטיפים שימושיים על אסטרולוגיה – מהבסיס ועד לרמות מתקדמות יותר:
             </p>
-            <ul style="list-style:none; max-width:700px; margin:0 auto; font-size:1.1rem; line-height:2;">
-                <li>✦ מזלות השמש והירח</li>
-                <li>✦ השפעת הכוכבים על חיי היומיום</li>
-                <li>✦ טכניקות קריאת מפות לידה</li>
-            </ul>
+            
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h4>מה ההבדל בין מזל שמש למזל ירח?</h4>
+                    <p>מזל השמש מייצג את הזהות המרכזית שלך, בעוד מזל הירח משקף את העולם הרגשי הפנימי. במאמר זה נבין איך שני אלה משפיעים יחד על האישיות שלך.</p>
+                    <span class="read-more" onclick="openModal('info-modal-1')">קרא עוד →</span>
+                </div>
+                
+                <div class="article-card">
+                    <h4>איך לקרוא מפת לידה – מדריך למתחילים</h4>
+                    <p>7 שלבים פשוטים להתחיל להבין את המפה האישית שלך: מזלות, בתים, כוכבים והיבטים ראשונים – הכל מוסבר בעברית ובמילים פשוטות.</p>
+                    <span class="read-more" onclick="openModal('info-modal-2')">קרא עוד →</span>
+                </div>
+                
+                <div class="article-card">
+                    <h4>השפעת הכוכבים על מערכות יחסים</h4>
+                    <p>ונוס, מאדים וירח – איך הם משפיעים על אהבה, תשוקה ותקשורת בזוגיות? דוגמאות ממפות אמיתיות.</p>
+                    <span class="read-more" onclick="openModal('info-modal-3')">קרא עוד →</span>
+                </div>
+                
+                <div class="article-card">
+                    <h4>מה המשמעות של היבטים קשים במפה?</h4>
+                    <p>רבים מפחדים מסקוורים או אופוזיציות – אבל לעיתים דווקא הם המנוע לצמיחה האישית הגדולה ביותר.</p>
+                    <span class="read-more" onclick="openModal('info-modal-4')">קרא עוד →</span>
+                </div>
+                
+                <div class="article-card">
+                    <h4>תחזיות אסטרולוגיות – איך זה עובד?</h4>
+                    <p>טרנזיטים, פרוגרסיות וסולאר – הסבר פשוט על איך הכוכבים "מדברים" על העתיד שלך.</p>
+                    <span class="read-more" onclick="openModal('info-modal-5')">קרא עוד →</span>
+                </div>
+                
+                <div class="article-card">
+                    <h4>אסטרולוגיה וקריירה – איפה הכסף?</h4>
+                    <p>הבית העשירי, שבתאי ויופיטר – איך למצוא את הכיוון המקצועי שמתאים למפה שלך.</p>
+                    <span class="read-more" onclick="openModal('info-modal-6')">קרא עוד →</span>
+                </div>
+            </div>
         </section>
 
         <section id="courses">
@@ -508,15 +634,34 @@
             <div class="course-grid">
                 <div class="course">
                     <h3>קורס בסיסי באסטרולוגיה</h3>
-                    <p>למידה על מזלות, בתים וכוכבים.</p>
+                    <p>קורס למתחילים – למידה על 12 המזלות, 12 הבתים, הכוכבים העיקריים וההיבטים הבסיסיים. 8 מפגשים אישיים אונליין + חומרי לימוד + תרגילים מעשיים + מפת לידה אישית שלך כדוגמה.</p>
                     <p style="font-weight:600; color:var(--accent); margin:1rem 0;">מחיר: 200 ש"ח</p>
-                    <button>רכישה</button>
+                    <button onclick="window.open('https://wa.me/+972538220279?text=היי%20נועם!%20אני%20מעוניין%20בקורס%20הבסיסי%20באסטרולוגיה', '_blank')">רכישה</button>
                 </div>
                 <div class="course">
                     <h3>קורס מתקדם</h3>
-                    <p>ניתוח מפות אישיות ותחזיות.</p>
+                    <p>ניתוח מפות מורכב, טכניקות תחזית (טרנזיטים, סולאר, פרוגרסיות), אסטרולוגיה זוגית וקרמית. 10 מפגשים אישיים + תמיכה בין מפגשים + תרגול על מפות שלך ושל אחרים.</p>
                     <p style="font-weight:600; color:var(--accent); margin:1rem 0;">מחיר: 500 ש"ח</p>
-                    <button>רכישה</button>
+                    <button onclick="window.open('https://wa.me/+972538220279?text=היי%20נועם!%20אני%20מעוניין%20בקורס%20המתקדם%20באסטרולוגיה', '_blank')">רכישה</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- סעיף חדש - המלצות -->
+        <section id="testimonials">
+            <h2>מה אומרים תלמידים ולקוחות</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    "נועם פשוט פתח לי את העיניים! אחרי הקורס הבסיסי אני כבר מצליחה לקרוא חלקים גדולים במפה שלי בעצמי."
+                    <cite>– מיכל, תל אביב</cite>
+                </div>
+                <div class="testimonial">
+                    "ההדרכה האישית של נועם עזרה לי להבין דפוסים שחוזרים בחיי האהבה. ממליצה בחום!"
+                    <cite>– שירה, ירושלים</cite>
+                </div>
+                <div class="testimonial">
+                    "הקורס המתקדם נתן לי כלים אמיתיים לתחזיות – שווה כל שקל."
+                    <cite>– דוד, חיפה</cite>
                 </div>
             </div>
         </section>
@@ -537,12 +682,15 @@
 
         <section id="about">
             <h2>אודות</h2>
-            <p style="text-align:center; max-width:800px; margin:0 auto 1rem; font-size:1.15rem; line-height:1.8;">
-                שמי נועם לולאן, מומחה באסטרולוגיה עם ניסיון רב.
+            <p style="text-align:center; max-width:800px; margin:0 auto 1.5rem; font-size:1.15rem; line-height:1.8;">
+                שמי נועם לולאן, אסטרולוג פעיל כבר יותר מ-8 שנים. התחלתי את הדרך מתוך סקרנות אישית עמוקה, והפכתי את האהבה הזו למקצוע.
             </p>
-
             <div class="about-profile">
                 <img src="https://i.postimg.cc/WzJrpG57/Screenshot-20260306-232738-Facebook.jpg" alt="נועם לולאן">
+                <p>
+                    אני מאמין שאסטרולוגיה היא כלי רב עוצמה להכרות עצמית, לקבלת החלטות מודעת ולנווט בחיים בצורה יותר מאוזנת ומשמעותית. 
+                    במהלך השנים ליוויתי מאות לקוחות ותלמידים – ממתחילים מוחלטים ועד לאנשים שרוצים להפוך את האסטרולוגיה למקצוע.
+                </p>
                 <p>
                     "אני כאן כדי לעזור לך להבין את המפה האישית שלך ולנווט בחיים בצורה מודעת, מאוזנת ומשמעותית יותר."
                 </p>
@@ -589,6 +737,67 @@
         <div class="modal-content">
             <p>אנו משתמשים בקובצי cookies כדי לשפר את החוויה שלך. האם אתה מאשר?</p>
             <button id="accept-cookies">מאשר</button>
+        </div>
+    </div>
+
+    <!-- מודאלים למרכז מידע -->
+    <div id="info-modal-1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-1')">×</span>
+            <h3>מה ההבדל בין מזל שמש למזל ירח?</h3>
+            <p>מזל השמש הוא זה שרוב האנשים מכירים כ"מזל" שלהם – הוא מייצג את האני המרכזי, את התכונות הבולטות והמודעות של האישיות. לדוגמה, אם השמש שלך במזל אריה, אתה נוטה להיות כריזמטי, יצירתי וזקוק לתשומת לב.</p>
+            <p>לעומת זאת, מזל הירח קשור יותר לעולם הרגשי הפנימי, לרצונות הלא מודעים, להרגלי ילדות ולתחושת הביטחון. אם הירח שלך במזל סרטן, אתה רגיש מאוד, מגונן על משפחה ומחפש יציבות רגשית.</p>
+            <p>השילוב בין השניים יוצר דינמיקה מעניינת: השמש היא "מי שאתה רוצה להיות" והירח הוא "מה שאתה צריך כדי להרגיש טוב". כדי להבין את עצמך טוב יותר, חשבו על דוגמה: שמש באריה וירח בסרטן – אדם שזקוק לקהל אבל גם לפרטיות רגשית עמוקה.</p>
+        </div>
+    </div>
+
+    <div id="info-modal-2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-2')">×</span>
+            <h3>איך לקרוא מפת לידה – מדריך למתחילים</h3>
+            <p>שלב 1: מצאו את מזל השמש – זה הבסיס לאישיות. שלב 2: בדקו את מזל הירח לרגשות. שלב 3: אתרו את מזל העולה (אסנדנט) – זה המסכה החיצונית.</p>
+            <p>שלב 4: הסתכלו על הבתים – כל בית מייצג תחום חיים (בית 1: עצמי, בית 7: זוגיות). שלב 5: בדקו כוכבים מרכזיים כמו מרקורי (תקשורת), ונוס (אהבה).</p>
+            <p>שלב 6: חפשו היבטים – קווים בין כוכבים (קונג'ונקציה: חיבור, סקוור: מתח). שלב 7: השתמשו בכלי מקוון להפקת מפה ותרגלו על עצמכם. זכרו: אסטרולוגיה היא כלי, לא גורל קבוע.</p>
+        </div>
+    </div>
+
+    <div id="info-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-3')">×</span>
+            <h3>השפעת הכוכבים על מערכות יחסים</h3>
+            <p>ונוס קובע את סגנון האהבה: ונוס במזל שור – אוהב יציבות וחושניות. מאדים קשור לתשוקה: מאדים באריה – תשוקה דרמטית ומלאת אנרגיה.</p>
+            <p>הירח משפיע על הצרכים הרגשיים: ירח בסרטן זקוק לביטחון רגשי עמוק. בזוגיות, השוו את ונוס שלכם לוונוס של בן/בת הזוג להבנת תאימות.</p>
+            <p>דוגמה: אם ונוס שלך בדגים (רומנטי, אידיאליסטי) ומאדים של בן הזוג במזל קשת (הרפתקני) – זה יכול ליצור זוגיות מלאת השראה אבל עם אתגרי יציבות.</p>
+        </div>
+    </div>
+
+    <div id="info-modal-4" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-4')">×</span>
+            <h3>מה המשמעות של היבטים קשים במפה?</h3>
+            <p>היבטים קשים כמו סקוור (90 מעלות) או אופוזיציה (180 מעלות) מצביעים על מתחים פנימיים או חיצוניים. הם לא "רעים" – הם אתגרים שמעודדים צמיחה.</p>
+            <p>למשל, שמש בסקוור לירח: קונפליקט בין רצונות מודעים לצרכים רגשיים, מה שמוביל להתפתחות אישית דרך פשרות.</p>
+            <p>טיפ: השתמשו בהיבטים אלה כמנוע לשינוי – הם מלמדים אותנו להתמודד עם קשיים ולהפוך אותם לכוחות. באסטרולוגיה מודרנית, הם נחשבים למתנות מוסוות.</p>
+        </div>
+    </div>
+
+    <div id="info-modal-5" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-5')">×</span>
+            <h3>תחזיות אסטרולוגיות – איך זה עובד?</h3>
+            <p>טרנזיטים: תנועת כוכבים נוכחיים על המפה האישית – לדוגמה, יופיטר טרנזיט על שמש: תקופת מזל והזדמנויות.</p>
+            <p>פרוגרסיות: התקדמות סמלית של המפה – יום אחרי לידה = שנה בחיים. סולאר: מפה שנתית שמתחילה ביום הולדת.</p>
+            <p>התחזיות לא קובעות גורל, אלא מצביעות על אנרגיות זמינות. השתמשו בהן לתכנון: אם שבתאי בטרנזיט קשה – זמן לבניית משמעת.</p>
+        </div>
+    </div>
+
+    <div id="info-modal-6" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-6')">×</span>
+            <h3>אסטרולוגיה וקריירה – איפה הכסף?</h3>
+            <p>הבית העשירי (קריירה) מראה את הייעוד: אם מזל גדי שם – קריירה מבוססת וממושמעת. שבתאי קשור לאמביציה: שבתאי חזק – הצלחה דרך עבודה קשה.</p>
+            <p>יופיטר מצביע על שפע: יופיטר בבית 2 (כסף) – הזדמנויות פיננסיות. דוגמה: שמש בבית 10 במזל אריה – קריירה בתחומי מנהיגות או במה.</p>
+            <p>טיפ: בדקו טרנזיטים לקריירה – אם יופיטר עובר בבית 10, זה זמן לקידום. אסטרולוגיה עוזרת לבחור מסלול שמתאים לאנרגיה שלכם.</p>
         </div>
     </div>
 
@@ -748,8 +957,25 @@
 
             document.getElementById('contact-form').reset();
         }
+
+        // פונקציות למודאלים
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // סגירה בלחיצה מחוץ למודאל
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 </html>
-
-בו נחזור אל הקוד הזה
