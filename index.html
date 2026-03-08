@@ -662,12 +662,63 @@
         </div>
     </div>
 
+    <div id="info-modal-2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-2')">×</span>
+            <h3>איך לקרוא מפת לידה – מדריך למתחילים</h3>
+            <p>1. התחל מהשמש – המיקום שלה במזל ובבית מראה את הזהות המרכזית שלך...</p>
+            <p>2. המשך לירח – הוא מראה את הצרכים הרגשיים ואת איך אתה מגיב רגשית...</p>
+            <p>3. תסתכל על האופק (Ascendant) – זה משפיע על איך אחרים רואים אותך...</p>
+            <p>ועוד 4 שלבים נוספים – בהמשך תוכל ללמוד את הכול בקורס הבסיסי!</p>
+        </div>
+    </div>
+
+    <div id="info-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-3')">×</span>
+            <h3>השפעת הכוכבים על מערכות יחסים</h3>
+            <p>ונוס במזל מאזניים תיתן נטייה ליחסים הרמוניים ומאוזנים...</p>
+            <p>מאדים בעקרב מביא תשוקה עזה אבל גם קנאה...</p>
+            <p>ירח בסרטן זקוק לביטחון רגשי וחיבוקים...</p>
+        </div>
+    </div>
+
+    <div id="info-modal-4" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-4')">×</span>
+            <h3>מה המשמעות של היבטים קשים במפה?</h3>
+            <p>סקוור או אופוזיציה אינם "רעים" – הם אתגרים שדוחפים אותך לצמיחה...</p>
+            <p>לדוגמה: שמש סקוור סטורן – לומדים משמעת ומבנה דרך קשיים...</p>
+            <p>המפתח הוא להפוך את הלחץ לכוח מניע...</p>
+        </div>
+    </div>
+
+    <div id="info-modal-5" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-5')">×</span>
+            <h3>תחזיות אסטרולוגיות – איך זה עובד?</h3>
+            <p>טרנזיטים – כוכבים עכשוויים מול המפה שלך...</p>
+            <p>פרוגרסיות – התפתחות פנימית של המפה שלך עם הזמן...</p>
+            <p>סולאר – מפת השנה שלך – מה יקרה בשנה הקרובה...</p>
+        </div>
+    </div>
+
+    <div id="info-modal-6" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('info-modal-6')">×</span>
+            <h3>אסטרולוגיה וקריירה – איפה הכסף?</h3>
+            <p>הבית העשירי (Midheaven) מראה את הקריירה והמוניטין...</p>
+            <p>שבתאי שם – עבודה קשה אבל הצלחה ארוכת טווח...</p>
+            <p>יופיטר בבית 2 – מזל כספי ויכולת למשוך הזדמנויות...</p>
+        </div>
+    </div>
+
     <script>
-        // Particles.js עם קווים מחברים (כמו בקונסטלציה)
+        // Particles.js עם קווים מחברים (החזרנו את האפקט)
         particlesJS("particles-js", {
             "particles": {
                 "number": {
-                    "value": 70,                  // כמות נקודות – לא יותר מדי כדי שהקווים לא יעמיסו
+                    "value": 70,
                     "density": { "enable": true, "value_area": 800 }
                 },
                 "color": { "value": "#ffffff" },
@@ -686,15 +737,15 @@
                     "anim": { "enable": false }
                 },
                 "line_linked": {
-                    "enable": true,               // ← הקווים מופעלים כאן
-                    "distance": 140,              // מרחק מקסימלי לקו (תשחק עם המספר – 120=יותר קווים, 180=פחות)
-                    "color": "#fbbf24",           // צבע הקווים – זהוב כמו ה-accent שלך
-                    "opacity": 0.35,              // שקיפות הקווים – לא חזק מדי
-                    "width": 1                    // עובי הקו
+                    "enable": true,               // ← קווים מופעלים
+                    "distance": 140,
+                    "color": "#fbbf24",           // זהוב כמו ה-accent
+                    "opacity": 0.35,
+                    "width": 1
                 },
                 "move": {
                     "enable": true,
-                    "speed": 0.9,                 // איטי ונעים כמו כוכבים
+                    "speed": 0.9,
                     "direction": "none",
                     "random": true,
                     "straight": false,
@@ -708,7 +759,7 @@
                 "events": {
                     "onhover": {
                         "enable": true,
-                        "mode": "grab"            // כשמעבירים עכבר/אצבע – מושך קווים
+                        "mode": "grab"            // מושך קווים כשמעבירים עכבר/אצבע
                     },
                     "onclick": {
                         "enable": true,
