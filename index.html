@@ -350,6 +350,27 @@
 
         .social-icon img { width:100%; height:100%; object-fit:cover; }
 
+        /* כפתור נגישות - מיקום למעלה ימין + גודל מוקטן */
+        .userway_buttons_wrapper,
+        .userway_buttons_wrapper .userway_button {
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            z-index: 9999 !important;
+        }
+
+        .userway_buttons_wrapper .userway_button {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 50% !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+            transition: transform 0.2s !important;
+        }
+
+        .userway_buttons_wrapper .userway_button:hover {
+            transform: scale(1.1) !important;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -465,6 +486,9 @@
     </style>
 </head>
 <body>
+
+    <!-- כפתור הנגישות (accessibility-widgets) יופיע עכשיו למעלה ימין בגודל מוקטן -->
+    <script src="https://cdn.jsdelivr.net/npm/accessibility-widgets@latest/widget.js"></script>
 
     <div id="particles-js"></div>
 
@@ -654,15 +678,12 @@
             <span class="close-modal" onclick="closeModal('info-modal-1')">×</span>
             <h3>מה ההבדל בין מזל שמש למזל ירח?</h3>
             <p>מזל השמש הוא זה שרוב האנשים מכירים כ"מזל" שלהם – הוא מייצג את האני המרכזי, את התכונות הבולטות והמודעות של האישיות. לדוגמה, אם השמש שלך במזל אריה, אתה נוטה להיות כריזמטי, יצירתי וזקוק לתשומת לב.</p>
-            <p>לעומת זאת, מזל הירח קשור יותר לעולם הרגשי הפנימי, לרצונות הלא מודעים, להרגלי ילדות ולתחושת הביטחון. אם הירח שלך במזל סרטן, אתה רגיש מאוד, מגונן על משפחה ומחפש יציבות רגשית.</p>
+            <p>לעומת זאת, מזל הירח קשור יותר לעולם הרגשי הפנימי, לרצונות הלא מודעים, להרגבי ילדות ולתחושת הביטחון. אם הירח שלך במזל סרטן, אתה רגיש מאוד, מגונן על משפחה ומחפש יציבות רגשית.</p>
             <p>השילוב בין השניים יוצר דינמיקה מעניינת: השמש היא "מי שאתה רוצה להיות" והירח הוא "מה שאתה צריך כדי להרגיש טוב". כדי להבין את עצמך טוב יותר, חשבו על דוגמה: שמש באריה וירח בסרטן – אדם שזקוק לקהל אבל גם לפרטיות רגשית עמוקה.</p>
         </div>
     </div>
 
-    <!-- ... (המודאלים האחרים נשארים אותו דבר, קיצרתי כאן כדי לא להאריך את ההודעה יותר מדי – העתק אותם מהקוד המקורי שלך אם צריך) ... -->
-
-    <!-- Accessibility Widget – חינמי, open-source, ללא הרשמה -->
-    <script src="https://cdn.jsdelivr.net/npm/accessibility-widgets@latest/widget.js"></script>
+    <!-- מודאלים נוספים – העתק את השאר מהקוד הישן שלך אם חסרים כאן -->
 
     <script>
         // Particles.js – כוכבים נעים ברקע
