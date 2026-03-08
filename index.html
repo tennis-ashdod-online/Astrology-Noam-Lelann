@@ -503,6 +503,14 @@
             font-weight: 500;
             text-shadow: 0 2px 12px rgba(251,191,36,0.5);
         }
+
+        /* סטייל נוסף לכותרות מעל השדות במחשבון */
+        .field-label {
+            font-size: 1.1rem;
+            color: #d1c4e9;
+            margin-bottom: 8px;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
@@ -532,6 +540,7 @@
             <a href="#info">מרכז מידע</a>
             <a href="#courses">קורסים</a>
             <a href="#about">אודות</a>
+            <a href="#zodiac-calculator">מחשבון מזלות</a>
             <a href="#contact">צור קשר</a>
         </nav>
     </header>
@@ -590,8 +599,6 @@
             </div>
         </section>
 
-        <!-- שאר הסעיפים (courses, testimonials, video, about, contact) נשארים כפי שהיו -->
-
         <section id="courses">
             <h2>קורסים מוכנים</h2>
             <div class="course-grid">
@@ -624,6 +631,29 @@
                 <div class="testimonial">
                     "הקורס המתקדם נתן לי כלים אמיתיים לתחזיות – שווה כל שקל."
                     <cite>– דוד, חיפה</cite>
+                </div>
+            </div>
+        </section>
+
+        <section id="zodiac-calculator">
+            <h2>מחשבון מזלות – מה המזל שלך?</h2>
+            <p class="intro-text" style="max-width:600px;">
+                הזן את תאריך ושעת הלידה שלך כדי לקבל תוצאה מדויקת יותר (חשוב במיוחד בימי מעבר בין מזלות)
+            </p>
+            
+            <div style="max-width:500px; margin:0 auto; background:rgba(30,27,68,0.6); padding:2rem; border-radius:16px; border:1px solid rgba(124,58,237,0.3);">
+                <form id="zodiac-form">
+                    <div class="field-label">תאריך</div>
+                    <input type="date" id="birthdate" required style="width:100%; padding:14px; margin-bottom:1.2rem; border-radius:10px; border:1px solid rgba(124,58,237,0.5); background:rgba(255,255,255,0.08); color:white; font-size:1.1rem;">
+                    
+                    <div class="field-label">שעה</div>
+                    <input type="time" id="birthtime" style="width:100%; padding:14px; margin-bottom:1.2rem; border-radius:10px; border:1px solid rgba(124,58,237,0.5); background:rgba(255,255,255,0.08); color:white; font-size:1.1rem;" placeholder="שעה (אופציונלי)">
+                    
+                    <button type="submit">חשב מזל</button>
+                </form>
+                
+                <div id="zodiac-result" style="margin-top:1.5rem; font-size:1.3rem; text-align:center; min-height:80px; color:var(--accent); font-weight:600;">
+                    <!-- כאן יופיע התוצאה -->
                 </div>
             </div>
         </section>
@@ -909,7 +939,7 @@
         function openModalWithLoading(modalId) {
             showLoading();
 
-            // זמן טעינה מדומה: 900 עד 1400 מילישניות (אפשר לשנות)
+            // זמן טעינה מדומה: 900 עד 1400 מילישניות
             const delay = Math.floor(Math.random() * 500) + 900;
 
             setTimeout(() => {
@@ -920,7 +950,7 @@
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
-            hideLoading(); // ביטוח למקרה שסוגרים בזמן טעינה
+            hideLoading();
         }
 
         window.addEventListener('click', function(event) {
@@ -929,9 +959,86 @@
             }
         });
 
-        // גלילה לראש הדף בעת טעינה (אופציונלי)
+        // גלילה לראש הדף בעת טעינה
         window.addEventListener('load', () => {
             window.scrollTo({ top: 0, behavior: 'instant' });
+        });
+
+        // מחשבון מזלות – עם אופציה לשעה (תיקון ימי מעבר)
+        document.getElementById('zodiac-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const birthdate = document.getElementById('birthdate').value;
+            if (!birthdate) {
+                alert('נא לבחור תאריך לידה');
+                return;
+            }
+
+            const date = new Date(birthdate);
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+
+            const timeInput = document.getElementById('birthtime').value;
+            let hour = 0;
+            let minute = 0;
+            if (timeInput) {
+                const [h, m] = timeInput.split(':').map(Number);
+                hour = h || 0;
+                minute = m || 0;
+            }
+
+            let zodiac = "";
+
+            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = "טלה ♈";
+            else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) zodiac = "שור ♉";
+            else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) zodiac = "תאומים ♊";
+            else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) zodiac = "סרטן ♋";
+            else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) zodiac = "אריה ♌";
+            else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) zodiac = "בתולה ♍";
+            else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) zodiac = "מאזניים ♎";
+            else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) zodiac = "עקרב ♏";
+            else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) zodiac = "קשת ♐";
+            else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) zodiac = "גדי ♑";
+            else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = "דלי ♒";
+            else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) zodiac = "דגים ♓";
+            else zodiac = "תאריך לא תקין";
+
+            // תיקון ימי מעבר פשוט
+            const cuspDates = {
+                1:  { day: 20, prev: "גדי ♑", next: "דלי ♒", approxHour: 5 },
+                2:  { day: 18, prev: "דלי ♒", next: "דגים ♓", approxHour: 18 },
+                3:  { day: 20, prev: "דגים ♓", next: "טלה ♈", approxHour: 8 },
+                4:  { day: 20, prev: "טלה ♈", next: "שור ♉", approxHour: 4 },
+                5:  { day: 21, prev: "שור ♉", next: "תאומים ♊", approxHour: 2 },
+                6:  { day: 21, prev: "תאומים ♊", next: "סרטן ♋", approxHour: 10 },
+                7:  { day: 22, prev: "סרטן ♋", next: "אריה ♌", approxHour: 15 },
+                8:  { day: 23, prev: "אריה ♌", next: "בתולה ♍", approxHour: 1 },
+                9:  { day: 23, prev: "בתולה ♍", next: "מאזניים ♎", approxHour: 3 },
+                10: { day: 23, prev: "מאזניים ♎", next: "עקרב ♏", approxHour: 6 },
+                11: { day: 22, prev: "עקרב ♏", next: "קשת ♐", approxHour: 12 },
+                12: { day: 22, prev: "קשת ♐", next: "גדי ♑", approxHour: 3 }
+            };
+
+            const cusp = cuspDates[month];
+            if (cusp && day === cusp.day) {
+                if (hour < cusp.approxHour || (hour === cusp.approxHour && minute < 30)) {
+                    zodiac = cusp.prev;
+                } else {
+                    zodiac = cusp.next;
+                }
+            }
+
+            const resultDiv = document.getElementById('zodiac-result');
+            let html = `המזל שלך הוא:<br><span style="font-size:1.8rem;">${zodiac}</span>`;
+            
+            if (timeInput) {
+                html += `<br><small style="font-size:0.9rem; opacity:0.8;">(בהתחשב בשעה ${timeInput})</small>`;
+            } else {
+                html += `<br><small style="font-size:0.9rem; opacity:0.8;">(ללא שעה – תוצאה משוערת)</small>`;
+            }
+
+            resultDiv.innerHTML = html;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     </script>
 </body>
